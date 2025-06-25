@@ -26,7 +26,7 @@
 
 ### 🔹 **Step 2. WebStorm에서 `example.html` 복제**
 
-1. WebStorm 실행
+1. WebStorm tool을 이용해서.
 2. `example.html` 파일 → `Copy` → `Paste`
 3. 새 파일 이름 지정: `해당페이지이름.html` (예: `스마트공장_참여_기업_상세.html`)
 4. 새로 복제한 파일 열기
