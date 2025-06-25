@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스마트공장</title>
+    <style>
+       * {padding: 0; margin: 0;}
+       td, th {border:1px solid red}
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <h1>데이터 구성 항목 테이블</h1>
+
+
+        <!-- 데이터 구성 항목 테이블 -->
+        <table id="data-structure-table">
+            <thead>
+                <tr>
+                    <th>항목명</th>
+                    <th>컨트롤</th>
+                    <th>필수 여부</th>
+                    <th>수정 가능 여부</th>
+                    <th>설명</th>
+                    <th>비고</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>구분</td>
+                    <td>select</td>
+                    <td>필수</td>
+                    <td>불가능</td>
+                    <td>FAQ 분류 선택</td>
+                    <td>드롭다운 선택</td>
+                </tr>
+                <tr>
+                    <td>제목(Q.)</td>
+                    <td>input(text)</td>
+                    <td>필수</td>
+                    <td>불가능</td>
+                    <td>FAQ 질문 제목 입력</td>
+                    <td>텍스트 입력</td>
+                </tr>
+                <tr>
+                    <td>공개</td>
+                    <td>radio</td>
+                    <td>필수</td>
+                    <td>불가능</td>
+                    <td>공개/비공개 선택</td>
+                    <td>라디오 버튼</td>
+                </tr>
+                <tr>
+                    <td>내용(A.)</td>
+                    <td>textarea(rich editor)</td>
+                    <td>필수</td>
+                    <td>불가능</td>
+                    <td>FAQ 답변 내용 입력</td>
+                    <td>리치 에디터</td>
+                </tr>
+                <tr>
+                    <td>첨부파일</td>
+                    <td>file upload</td>
+                    <td>선택</td>
+                    <td>불가능</td>
+                    <td>파일 첨부</td>
+                    <td>최대 10개, 50MB 이하</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h1>처리 로직 정의</h1>
+
+
+        <!-- 처리 로직 정의 테이블 -->
+        <table id="logic-definition-table">
+            <thead>
+                <tr>
+                    <th>이벤트명</th>
+                    <th>입력값/파라미터</th>
+                    <th>처리내용</th>
+                    <th>출력값/처리결과</th>
+                    <th>비고</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>구분</td>
+                    <td>select</td>
+                    <td>필수</td>
+                    <td>가능</td>
+                    <td>FAQ 분류 선택</td>
+                    <td>드롭다운 선택</td>
+                </tr>
+                <tr>
+                    <td>제목(Q.)</td>
+                    <td>input(text)</td>
+                    <td>필수</td>
+                    <td>가능</td>
+                    <td>FAQ 질문 제목 입력</td>
+                    <td>텍스트 입력</td>
+                </tr>
+                <tr>
+                    <td>공개</td>
+                    <td>radio</td>
+                    <td>필수</td>
+                    <td>가능</td>
+                    <td>공개/비공개 선택</td>
+                    <td>라디오 버튼</td>
+                </tr>
+                <tr>
+                    <td>내용(A.)</td>
+                    <td>textarea(rich editor)</td>
+                    <td>필수</td>
+                    <td>가능</td>
+                    <td>FAQ 답변 내용 입력</td>
+                    <td>리치 에디터</td>
+                </tr>
+                <tr>
+                    <td>첨부파일</td>
+                    <td>file upload</td>
+                    <td>선택</td>
+                    <td>가능</td>
+                    <td>파일 첨부</td>
+                    <td>최대 10개, 50MB 이하</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+    </div>
+</body>
+</html>
