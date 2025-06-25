@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스마트공장</title>
+    <style>
+       * {padding: 0; margin: 0;}
+       td, th {border:1px solid red}
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <h1>데이터 구성 항목 테이블</h1>
+
+
+        <!-- 데이터 구성 항목 테이블 -->
+        <table id="data-structure-table">
+            <thead>
+                <tr>
+                    <th>항목명</th>
+                    <th>컨트롤</th>
+                    <th>필수 여부</th>
+                    <th>수정 가능 여부</th>
+                    <th>설명</th>
+                    <th>비고</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>NO</td>
+                    <td>text(읽기전용)</td>
+                    <td>필수</td>
+                    <td>불가능</td>
+                    <td>문의 순번</td>
+                    <td>자동 생성</td>
+                </tr>
+                <tr>
+                    <td>문의구분</td>
+                    <td>select</td>
+                    <td>선택</td>
+                    <td>가능</td>
+                    <td>문의 카테고리 선택</td>
+                    <td>스마트공장, 교육, 로그인/회원가입, 스마트비즈엑스포, 기타</td>
+                </tr>
+                <tr>
+                    <td>답변현황</td>
+                    <td>text(읽기전용)</td>
+                    <td>필수</td>
+                    <td>불가능</td>
+                    <td>답변 상태 표시</td>
+                    <td>답변대기, 답변완료</td>
+                </tr>
+                <tr>
+                    <td>제목</td>
+                    <td>text(링크)</td>
+                    <td>필수</td>
+                    <td>불가능</td>
+                    <td>문의 제목</td>
+                    <td>클릭 시 상세보기</td>
+                </tr>
+                <tr>
+                    <td>문의일</td>
+                    <td>date(읽기전용)</td>
+                    <td>필수</td>
+                    <td>불가능</td>
+                    <td>문의 등록일</td>
+                    <td>YYYY-MM-DD 형식</td>
+                </tr>
+                <tr>
+                    <td>답변일</td>
+                    <td>date(읽기전용)</td>
+                    <td>선택</td>
+                    <td>불가능</td>
+                    <td>답변 완료일</td>
+                    <td>YYYY-MM-DD 형식 또는 '-'</td>
+                </tr>
+                <tr>
+                    <td>답변자</td>
+                    <td>text(읽기전용)</td>
+                    <td>선택</td>
+                    <td>불가능</td>
+                    <td>답변 작성자명</td>
+                    <td>답변완료 시만 표시</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h1>처리 로직 정의</h1>
+
+
+        <!-- 처리 로직 정의 테이블 -->
+        <table id="logic-definition-table">
+            <thead>
+                <tr>
+                    <th>이벤트명</th>
+                    <th>입력값/파라미터</th>
+                    <th>처리내용</th>
+                    <th>출력값/처리결과</th>
+                    <th>비고</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>답변현황 필터링</td>
+                    <td>선택값(전체/답변대기/답변완료)</td>
+                    <td>선택된 답변현황으로 목록 필터링</td>
+                    <td>필터링된 문의 목록 표시</td>
+                    <td>기본값: 전체</td>
+                </tr>
+                <tr>
+                    <td>문의구분 필터링</td>
+                    <td>선택값(전체/카테고리명)</td>
+                    <td>선택된 문의구분으로 목록 필터링</td>
+                    <td>필터링된 문의 목록 표시</td>
+                    <td>기본값: 전체</td>
+                </tr>
+                <tr>
+                    <td>기간 필터링</td>
+                    <td>시작일, 종료일</td>
+                    <td>문의일 기준 기간 내 목록 필터링</td>
+                    <td>기간 내 문의 목록 표시</td>
+                    <td>날짜 선택기 제공</td>
+                </tr>
+                <tr>
+                    <td>검색 실행</td>
+                    <td>검색어</td>
+                    <td>제목 및 내용으로 검색</td>
+                    <td>검색 결과 목록 표시</td>
+                    <td>부분 일치 검색</td>
+                </tr>
+                <tr>
+                    <td>초기화 버튼 클릭</td>
+                    <td>없음</td>
+                    <td>모든 필터 및 검색 조건 초기화</td>
+                    <td>전체 목록 표시</td>
+                    <td>검색창 및 필터 초기화</td>
+                </tr>
+                <tr>
+                    <td>제목 클릭</td>
+                    <td>문의 ID</td>
+                    <td>해당 문의의 상세 정보 조회</td>
+                    <td>문의 상세보기 페이지 이동</td>
+                    <td>새창 또는 페이지 전환</td>
+                </tr>
+                <tr>
+                    <td>답변 버튼 클릭</td>
+                    <td>문의 ID</td>
+                    <td>답변 작성 페이지로 이동</td>
+                    <td>답변 작성 화면 표시</td>
+                    <td>답변대기 상태만 가능</td>
+                </tr>
+                <tr>
+                    <td>페이지네이션</td>
+                    <td>페이지 번호</td>
+                    <td>해당 페이지 목록 로드</td>
+                    <td>선택된 페이지 데이터 표시</td>
+                    <td>페이지당 10건 표시</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+    </div>
+</body>
+</html>

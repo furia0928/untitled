@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스마트공장</title>
+    <style>
+       * {padding: 0; margin: 0;}
+       td, th {border:1px solid red}
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <h1>데이터 구성 항목 테이블</h1>
+
+
+        <!-- 데이터 구성 항목 테이블 -->
+        <table id="data-structure-table">
+            <thead>
+                <tr>
+                    <th>항목명</th>
+                    <th>컨트롤</th>
+                    <th>필수 여부</th>
+                    <th>수정 가능 여부</th>
+                    <th>설명</th>
+                    <th>비고</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>NO</td>
+                    <td>text(읽기전용)</td>
+                    <td>필수</td>
+                    <td>불가능</td>
+                    <td>카테고리 순번</td>
+                    <td>자동 생성</td>
+                </tr>
+                <tr>
+                    <td>카테고리명</td>
+                    <td>input(text)</td>
+                    <td>필수</td>
+                    <td>가능</td>
+                    <td>카테고리 이름 입력</td>
+                    <td>중복 불가</td>
+                </tr>
+                <tr>
+                    <td>FAQ 게시글 수</td>
+                    <td>text(읽기전용)</td>
+                    <td>필수</td>
+                    <td>불가능</td>
+                    <td>해당 카테고리의 FAQ 게시글 수</td>
+                    <td>자동 계산</td>
+                </tr>
+                <tr>
+                    <td>1:1문의 수</td>
+                    <td>text(읽기전용)</td>
+                    <td>필수</td>
+                    <td>불가능</td>
+                    <td>해당 카테고리의 1:1문의 수</td>
+                    <td>자동 계산</td>
+                </tr>
+                <tr>
+                    <td>등록/수정</td>
+                    <td>button</td>
+                    <td>필수</td>
+                    <td>가능</td>
+                    <td>카테고리 등록 또는 수정 버튼</td>
+                    <td>취소/등록 또는 수정</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h1>처리 로직 정의</h1>
+
+
+        <!-- 처리 로직 정의 테이블 -->
+        <table id="logic-definition-table">
+            <thead>
+                <tr>
+                    <th>이벤트명</th>
+                    <th>입력값/파라미터</th>
+                    <th>처리내용</th>
+                    <th>출력값/처리결과</th>
+                    <th>비고</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>카테고리 입력</td>
+                    <td>카테고리명 텍스트</td>
+                    <td>입력 필드에 카테고리명 입력</td>
+                    <td>텍스트 입력 완료</td>
+                    <td>필수 입력 항목</td>
+                </tr>
+                <tr>
+                    <td>등록 버튼 클릭</td>
+                    <td>입력된 카테고리명</td>
+                    <td>유효성 검사 → 중복 체크 → 데이터베이스 저장</td>
+                    <td>"수정이 완료되었습니다." 알럿</td>
+                    <td>성공 시 목록 새로고침</td>
+                </tr>
+                <tr>
+                    <td>취소 버튼 클릭</td>
+                    <td>없음</td>
+                    <td>입력 폼 초기화</td>
+                    <td>입력 필드 비움</td>
+                    <td>편집 모드 해제</td>
+                </tr>
+                <tr>
+                    <td>수정 버튼 클릭</td>
+                    <td>선택된 카테고리 데이터</td>
+                    <td>해당 행의 편집 모드 활성화</td>
+                    <td>입력 필드로 변환</td>
+                    <td>기존값 로드</td>
+                </tr>
+                <tr>
+                    <td>검색 실행</td>
+                    <td>검색어</td>
+                    <td>카테고리명으로 필터링</td>
+                    <td>검색 결과 테이블 표시</td>
+                    <td>부분 일치 검색</td>
+                </tr>
+                <tr>
+                    <td>초기화 버튼 클릭</td>
+                    <td>없음</td>
+                    <td>검색 조건 및 필터 초기화</td>
+                    <td>전체 목록 표시</td>
+                    <td>검색창 비움</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+    </div>
+</body>
+</html>
