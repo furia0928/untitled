@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스마트공장</title>
+    <style>
+       * {padding: 0; margin: 0;}
+       td, th {border:1px solid red}
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <h1>데이터 구성 항목 테이블</h1>
+
+        <!-- 데이터 구성 항목 테이블 -->
+        <table id="data-structure-table">
+            <thead>
+                <tr>
+                    <th>항목명</th>
+                    <th>컨트롤</th>
+                    <th>필수 여부</th>
+                    <th>수정 가능 여부</th>
+                    <th>설명</th>
+                    <th>비고</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>제목</td>
+                    <td>input(text)</td>
+                    <td>필수</td>
+                    <td>가능</td>
+                    <td>서비스 점검 제목 입력</td>
+                    <td>최대 20자, 프론트 미노출</td>
+                </tr>
+                <tr>
+                    <td>시작일시</td>
+                    <td>calendar + select</td>
+                    <td>필수</td>
+                    <td>가능</td>
+                    <td>점검 시작 일시 선택</td>
+                    <td>날짜 + 시간(시, 분), YYYY.MM.DD HH:mm</td>
+                </tr>
+                <tr>
+                    <td>종료일시</td>
+                    <td>calendar + select</td>
+                    <td>필수</td>
+                    <td>가능</td>
+                    <td>점검 종료 일시 선택</td>
+                    <td>날짜 + 시간(시, 분), YYYY.MM.DD HH:mm</td>
+                </tr>
+                <tr>
+                    <td>점검 사유</td>
+                    <td>textarea</td>
+                    <td>필수</td>
+                    <td>가능</td>
+                    <td>점검 상세 사유 입력</td>
+                    <td>최대 100자, 프론트 미노출, 문자수 표시</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h1>처리 로직 정의</h1>
+
+        <!-- 처리 로직 정의 테이블 -->
+        <table id="logic-definition-table">
+            <thead>
+                <tr>
+                    <th>이벤트명</th>
+                    <th>입력값/파라미터</th>
+                    <th>처리내용</th>
+                    <th>출력값/처리결과</th>
+                    <th>비고</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>등록 버튼 클릭</td>
+                    <td>모든 필수 입력값</td>
+                    <td>유효성 검증 후 서비스 점검 등록 처리</td>
+                    <td>"등록이 완료되었습니다." 알럿 표시</td>
+                    <td>[Posting Guide] 적용</td>
+                </tr>
+                <tr>
+                    <td>취소 버튼 클릭</td>
+                    <td>없음</td>
+                    <td>입력 취소 및 이전 페이지로 이동</td>
+                    <td>서비스 점검 관리 목록으로 이동</td>
+                    <td>[Posting Guide] 적용</td>
+                </tr>
+                <tr>
+                    <td>날짜 선택</td>
+                    <td>선택된 날짜</td>
+                    <td>날짜 입력 시 프론트 게재 연도 필터 적용</td>
+                    <td>선택된 날짜 표시</td>
+                    <td>게재 연도 값으로 필터 기준</td>
+                </tr>
+                <tr>
+                    <td>시간 미선택 예외처리</td>
+                    <td>날짜만 선택</td>
+                    <td>시간 기본값 자동 적용</td>
+                    <td>시간을 00:00으로 설정</td>
+                    <td>예외 처리 로직</td>
+                </tr>
+                <tr>
+                    <td>유효성 검증</td>
+                    <td>입력된 데이터</td>
+                    <td>필수값 입력 여부 및 형식 검증</td>
+                    <td>검증 결과 반환</td>
+                    <td>등록 전 필수 처리</td>
+                </tr>
+                <tr>
+                    <td>문자수 카운트</td>
+                    <td>입력 텍스트</td>
+                    <td>실시간 문자수 계산 및 표시</td>
+                    <td>현재/최대 문자수 표시</td>
+                    <td>0/100 형태로 표시</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스마트공장</title>
+    <style>
+       * {padding: 0; margin: 0;}
+       td, th {border:1px solid red}
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <h1>데이터 구성 항목 테이블</h1>
+
+        <!-- 데이터 구성 항목 테이블 -->
+        <table id="data-structure-table">
+            <thead>
+                <tr>
+                    <th>항목명</th>
+                    <th>컨트롤</th>
+                    <th>필수 여부</th>
+                    <th>수정 가능 여부</th>
+                    <th>설명</th>
+                    <th>비고</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>제목</td>
+                    <td>input(text)</td>
+                    <td>필수</td>
+                    <td>가능</td>
+                    <td>서비스 점검 제목 입력</td>
+                    <td>예: 11월 서비스 점검</td>
+                </tr>
+                <tr>
+                    <td>시작일시</td>
+                    <td>calendar + select</td>
+                    <td>필수</td>
+                    <td>가능</td>
+                    <td>점검 시작 일시 선택</td>
+                    <td>날짜 + 시간(시, 분)</td>
+                </tr>
+                <tr>
+                    <td>종료일시</td>
+                    <td>calendar + select</td>
+                    <td>필수</td>
+                    <td>가능</td>
+                    <td>점검 종료 일시 선택</td>
+                    <td>날짜 + 시간(시, 분)</td>
+                </tr>
+                <tr>
+                    <td>점검 사유</td>
+                    <td>textarea</td>
+                    <td>필수</td>
+                    <td>가능</td>
+                    <td>점검 상세 사유 입력</td>
+                    <td>최대 100자, 문자수 표시</td>
+                </tr>
+                <tr>
+                    <td>상태</td>
+                    <td>text(readonly)</td>
+                    <td>-</td>
+                    <td>불가능</td>
+                    <td>현재 점검 상태 표시</td>
+                    <td>예정, 진행중, 완료, 취소됨</td>
+                </tr>
+                <tr>
+                    <td>등록일시</td>
+                    <td>text(readonly)</td>
+                    <td>-</td>
+                    <td>불가능</td>
+                    <td>등록일시 표시</td>
+                    <td>YYYY-MM-DD HH:mm 형식</td>
+                </tr>
+                <tr>
+                    <td>등록자</td>
+                    <td>text(readonly)</td>
+                    <td>-</td>
+                    <td>불가능</td>
+                    <td>등록자명 표시</td>
+                    <td>등록한 사용자명</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h1>처리 로직 정의</h1>
+
+        <!-- 처리 로직 정의 테이블 -->
+        <table id="logic-definition-table">
+            <thead>
+                <tr>
+                    <th>이벤트명</th>
+                    <th>입력값/파라미터</th>
+                    <th>처리내용</th>
+                    <th>출력값/처리결과</th>
+                    <th>비고</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>취소 버튼 클릭</td>
+                    <td>없음</td>
+                    <td>점검 취소 확인 팝업 표시</td>
+                    <td>확인 다이얼로그 표시</td>
+                    <td>예정 상태에서만 활성화</td>
+                </tr>
+                <tr>
+                    <td>점검 취소 확인</td>
+                    <td>사용자 확인</td>
+                    <td>점검 상태를 취소됨으로 변경</td>
+                    <td>점검 취소 처리 완료</td>
+                    <td>복구 불가, 이력에만 남음</td>
+                </tr>
+                <tr>
+                    <td>점검 취소 닫기</td>
+                    <td>사용자 취소</td>
+                    <td>확인 다이얼로그 닫기</td>
+                    <td>상세 페이지로 복귀</td>
+                    <td>취소 처리하지 않음</td>
+                </tr>
+                <tr>
+                    <td>목록 버튼 클릭</td>
+                    <td>없음</td>
+                    <td>서비스 점검 관리 목록으로 이동</td>
+                    <td>목록 페이지 표시</td>
+                    <td>[Posting Guide] 적용</td>
+                </tr>
+                <tr>
+                    <td>페이지 로드</td>
+                    <td>점검 ID</td>
+                    <td>해당 점검의 상세 정보 조회</td>
+                    <td>상세 정보 표시</td>
+                    <td>읽기 전용 필드 자동 설정</td>
+                </tr>
+                <tr>
+                    <td>상태별 버튼 제어</td>
+                    <td>점검 상태</td>
+                    <td>상태에 따른 버튼 활성화/비활성화</td>
+                    <td>취소 버튼 표시 여부 결정</td>
+                    <td>예정 상태에서만 취소 가능</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+</html>
