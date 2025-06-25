@@ -5,92 +5,141 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>스마트공장</title>
     <style>
-       * {padding: 0; margin: 0;}
-       td, th {border:1px solid red}
+        * {padding: 0; margin: 0;}
+        td, th {border:1px solid red}
     </style>
 </head>
 <body>
-    <div class="container">
+<div class="container">
 
-        <h1>데이터 구성 항목 테이블</h1>
-
-
-        <!-- 데이터 구성 항목 테이블 -->
-        <table id="data-structure-table">
-            <thead>
-                <tr>
-                    <th>항목명</th>
-                    <th>컨트롤</th>
-                    <th>필수 여부</th>
-                    <th>수정 가능 여부</th>
-                    <th>설명</th>
-                    <th>비고</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>구분</td>
-                    <td>select</td>
-                    <td>필수</td>
-                    <td>가능</td>
-                    <td>약관의 종류 구분</td>
-                    <td>드롭다운 선택, 빈 상태</td>
-                </tr>
-                <tr>
-                    <td>공개</td>
-                    <td>radio(Y/N)</td>
-                    <td>필수</td>
-                    <td>가능</td>
-                    <td>약관 공개 여부 설정</td>
-                    <td>Y: 공개, N: 비공개, 기본값 Y 선택됨</td>
-                </tr>
-                <tr>
-                    <td>적용일자(버전)</td>
-                    <td>date</td>
-                    <td>필수</td>
-                    <td>가능</td>
-                    <td>약관이 적용되는 날짜 입력</td>
-                    <td>YYYY.MM.DD 형식, 플레이스홀더 상태</td>
-                </tr>
-                <tr>
-                    <td>게시일자</td>
-                    <td>date</td>
-                    <td>필수</td>
-                    <td>가능</td>
-                    <td>약관이 게시되는 날짜 입력</td>
-                    <td>YYYY.MM.DD 형식, 플레이스홀더 상태, 안내 메시지 포함</td>
-                </tr>
-                <tr>
-                    <td>내용</td>
-                    <td>textarea</td>
-                    <td>필수</td>
-                    <td>가능</td>
-                    <td>약관의 상세 내용 입력</td>
-                    <td>리치 텍스트 에디터, 빈 상태</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h1>처리 로직 정의</h1>
+    <h1>데이터 구성 항목 테이블</h1>
 
 
-        <!-- 처리 로직 정의 테이블 -->
-        <table id="logic-definition-table">
-            <thead>
-                <tr>
-                    <th>이벤트명</th>
-                    <th>입력값/파라미터</th>
-                    <th>처리내용</th>
-                    <th>출력값/처리결과</th>
-                    <th>비고</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+    <!-- 데이터 구성 항목 테이블 -->
+    <table id="data-structure-table">
+        <thead>
+        <tr>
+            <th>항목명</th>
+            <th>컨트롤</th>
+            <th>필수 여부</th>
+            <th>수정 가능 여부</th>
+            <th>설명</th>
+            <th>비고</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>구분</td>
+            <td>select</td>
+            <td>필수</td>
+            <td>가능</td>
+            <td>약관의 종류 구분</td>
+            <td>드롭다운 선택, 빈 상태</td>
+        </tr>
+        <tr>
+            <td>공개</td>
+            <td>radio(Y/N)</td>
+            <td>필수</td>
+            <td>가능</td>
+            <td>약관 공개 여부 설정</td>
+            <td>Y: 공개, N: 비공개, 기본값 Y 선택됨</td>
+        </tr>
+        <tr>
+            <td>적용일자(버전)</td>
+            <td>date</td>
+            <td>필수</td>
+            <td>가능</td>
+            <td>약관이 적용되는 날짜 입력</td>
+            <td>YYYY.MM.DD 형식, 플레이스홀더 상태</td>
+        </tr>
+        <tr>
+            <td>게시일자</td>
+            <td>date</td>
+            <td>필수</td>
+            <td>가능</td>
+            <td>약관이 게시되는 날짜 입력</td>
+            <td>YYYY.MM.DD 형식, 플레이스홀더 상태, 안내 메시지 포함</td>
+        </tr>
+        <tr>
+            <td>내용</td>
+            <td>textarea</td>
+            <td>필수</td>
+            <td>가능</td>
+            <td>약관의 상세 내용 입력</td>
+            <td>리치 텍스트 에디터, 빈 상태</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h1>처리 로직 정의</h1>
+
+
+    <!-- 처리 로직 정의 테이블 -->
+    <table id="logic-definition-table">
+        <thead>
+        <tr>
+            <th>이벤트명</th>
+            <th>입력값/파라미터</th>
+            <th>처리내용</th>
+            <th>출력값/처리결과</th>
+            <th>비고</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>등록 버튼 클릭</td>
+            <td>폼 데이터 전체</td>
+            <td>입력값 유효성 검증 → DB 저장 → 성공/실패 처리</td>
+            <td>"등록되었습니다" 성공 메시지 또는 오류 메시지</td>
+            <td>필수 항목 누락 시 오류 표시</td>
+        </tr>
+        <tr>
+            <td>취소 버튼 클릭</td>
+            <td>-</td>
+            <td>입력사항 확인 팝업 → 약관 목록 페이지로 이동</td>
+            <td>약관 관리 목록 페이지 이동 또는 머무르기</td>
+            <td>입력사항 있을 경우 확인 팝업</td>
+        </tr>
+        <tr>
+            <td>구분 선택</td>
+            <td>약관 구분값</td>
+            <td>드롭다운 목록 표시 → 선택값 적용</td>
+            <td>선택된 구분으로 폼 상태 업데이트</td>
+            <td>약관 유형별 카테고리 설정</td>
+        </tr>
+        <tr>
+            <td>공개 여부 선택</td>
+            <td>Y 또는 N</td>
+            <td>라디오 버튼 상태 변경 → 선택값 저장</td>
+            <td>선택된 값으로 폼 상태 업데이트</td>
+            <td>Y가 기본 선택됨</td>
+        </tr>
+        <tr>
+            <td>날짜 입력</td>
+            <td>날짜 값</td>
+            <td>달력 팝업 표시 → 날짜 선택 → 입력 필드에 적용</td>
+            <td>YYYY.MM.DD 형식으로 입력 필드 업데이트</td>
+            <td>플레이스홀더에서 실제 값으로 변경</td>
+        </tr>
+        <tr>
+            <td>게시일자 정보 확인</td>
+            <td>-</td>
+            <td>게시일자 필드 포커스 시 안내 메시지 표시</td>
+            <td>"게시일 이전에는 약관이 노출되지 않습니다" 메시지</td>
+            <td>주의 아이콘과 함께 표시</td>
+        </tr>
+        <tr>
+            <td>내용 편집</td>
+            <td>텍스트 내용</td>
+            <td>리치 텍스트 에디터 기능 실행 → 포맷 적용</td>
+            <td>서식이 적용된 텍스트 내용</td>
+            <td>Bold, 밑줄, 목록, 링크 등 지원</td>
+        </tr>
+        </tbody>
+    </table>
 
 
 
-    </div>
+</div>
 </body>
 </html>
