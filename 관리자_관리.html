@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스마트공장</title>
+    <style>
+       * {padding: 0; margin: 0;}
+       td, th {border:1px solid red}
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <h1>데이터 구성 항목 테이블</h1>
+
+
+        <!-- 데이터 구성 항목 테이블 -->
+        <table id="data-structure-table">
+            <thead>
+                <tr>
+                    <th>항목명</th>
+                    <th>컨트롤</th>
+                    <th>필수 여부</th>
+                    <th>수정 가능 여부</th>
+                    <th>설명</th>
+                    <th>비고</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>권한</td>
+                    <td>select</td>
+                    <td>선택</td>
+                    <td>가능</td>
+                    <td>전체, 일반 관리자, 슈퍼 관리자 선택</td>
+                    <td>기본값: 전체</td>
+                </tr>
+                <tr>
+                    <td>검색조건</td>
+                    <td>select</td>
+                    <td>선택</td>
+                    <td>가능</td>
+                    <td>이름, ID, 이메일 중 선택</td>
+                    <td>기본값: 이름</td>
+                </tr>
+                <tr>
+                    <td>검색어</td>
+                    <td>input(text)</td>
+                    <td>선택</td>
+                    <td>가능</td>
+                    <td>검색조건에 따른 검색어 입력</td>
+                    <td>플레이스홀더: 검색어를 입력해 주세요</td>
+                </tr>
+                <tr>
+                    <td>번호</td>
+                    <td>display</td>
+                    <td>-</td>
+                    <td>불가</td>
+                    <td>리스트 순번 (내림차순)</td>
+                    <td>자동 생성</td>
+                </tr>
+                <tr>
+                    <td>권한</td>
+                    <td>display</td>
+                    <td>-</td>
+                    <td>불가</td>
+                    <td>일반/슈퍼 관리자 구분</td>
+                    <td>데이터 표시</td>
+                </tr>
+                <tr>
+                    <td>이름</td>
+                    <td>display</td>
+                    <td>-</td>
+                    <td>불가</td>
+                    <td>관리자 이름</td>
+                    <td>클릭 시 상세페이지 이동</td>
+                </tr>
+                <tr>
+                    <td>ID</td>
+                    <td>display</td>
+                    <td>-</td>
+                    <td>불가</td>
+                    <td>관리자 ID</td>
+                    <td>암호화 데이터</td>
+                </tr>
+                <tr>
+                    <td>이메일</td>
+                    <td>display</td>
+                    <td>-</td>
+                    <td>불가</td>
+                    <td>관리자 이메일</td>
+                    <td>암호화 데이터</td>
+                </tr>
+                <tr>
+                    <td>사용여부</td>
+                    <td>display</td>
+                    <td>-</td>
+                    <td>불가</td>
+                    <td>사용/미사용 상태</td>
+                    <td>활성화 상태 표시</td>
+                </tr>
+                <tr>
+                    <td>등록자</td>
+                    <td>display</td>
+                    <td>-</td>
+                    <td>불가</td>
+                    <td>등록한 사용자 이름</td>
+                    <td>시스템 또는 사용자명</td>
+                </tr>
+                <tr>
+                    <td>등록일</td>
+                    <td>display</td>
+                    <td>-</td>
+                    <td>불가</td>
+                    <td>등록 날짜</td>
+                    <td>YYYY-MM-DD 형식</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h1>처리 로직 정의</h1>
+
+
+        <!-- 처리 로직 정의 테이블 -->
+        <table id="logic-definition-table">
+            <thead>
+                <tr>
+                    <th>이벤트명</th>
+                    <th>입력값/파라미터</th>
+                    <th>처리내용</th>
+                    <th>출력값/처리결과</th>
+                    <th>비고</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>권한 선택</td>
+                    <td>선택된 권한 값</td>
+                    <td>권한 필터링 조건 설정</td>
+                    <td>선택된 권한 옵션 활성화</td>
+                    <td>전체/일반 관리자/슈퍼 관리자 중 선택</td>
+                </tr>
+                <tr>
+                    <td>검색조건 선택</td>
+                    <td>선택된 검색조건</td>
+                    <td>검색 대상 필드 설정</td>
+                    <td>검색조건 옵션 활성화</td>
+                    <td>이름/ID/이메일 중 선택</td>
+                </tr>
+                <tr>
+                    <td>검색어 입력</td>
+                    <td>입력된 검색어</td>
+                    <td>검색어 유효성 검사</td>
+                    <td>입력 필드 업데이트</td>
+                    <td>ID/이메일은 정확 일치 검색</td>
+                </tr>
+                <tr>
+                    <td>검색 버튼 클릭</td>
+                    <td>권한, 검색조건, 검색어</td>
+                    <td>조건에 맞는 관리자 리스트 조회</td>
+                    <td>필터링된 관리자 목록 표시 및 전체 건수 업데이트</td>
+                    <td>ID/이메일은 암호화 데이터와 정확 일치 검색</td>
+                </tr>
+                <tr>
+                    <td>초기화 버튼 클릭</td>
+                    <td>-</td>
+                    <td>모든 검색 조건 초기화</td>
+                    <td>검색 필드 리셋 및 전체 리스트 표시</td>
+                    <td>권한: 전체, 검색조건: 이름, 검색어: 빈값</td>
+                </tr>
+                <tr>
+                    <td>등록 버튼 클릭</td>
+                    <td>-</td>
+                    <td>관리자 등록 페이지로 이동</td>
+                    <td>페이지 이동 (BADM01010300)</td>
+                    <td>신규 관리자 등록 페이지 호출</td>
+                </tr>
+                <tr>
+                    <td>이름 클릭</td>
+                    <td>선택된 관리자 정보</td>
+                    <td>해당 관리자 상세(수정) 페이지로 이동</td>
+                    <td>페이지 이동 (BADM01010200)</td>
+                    <td>관리자 정보 수정 가능</td>
+                </tr>
+                <tr>
+                    <td>페이지네이션 클릭</td>
+                    <td>페이지 번호</td>
+                    <td>해당 페이지의 관리자 리스트 조회</td>
+                    <td>선택된 페이지의 데이터 표시</td>
+                    <td>테이블 하단 중앙에 위치</td>
+                </tr>
+                <tr>
+                    <td>페이지 로드</td>
+                    <td>-</td>
+                    <td>관리자 리스트 조회 (등록일 기준 내림차순 정렬)</td>
+                    <td>관리자 목록 표시 및 전체 건수 표시 (전체 N,NNN건)</td>
+                    <td>최신 등록 순으로 정렬</td>
+                </tr>
+                <tr>
+                    <td>데이터 없음</td>
+                    <td>-</td>
+                    <td>검색 결과가 없을 때 빈 행 표시</td>
+                    <td>모든 컬럼에 '-' 표시</td>
+                    <td>검색 조건에 맞는 데이터가 없는 경우</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+    </div>
+</body>
+</html>
